@@ -1,3 +1,16 @@
+/* add event listener for each key code */
+window.addEventListener("keydown", (e) => {
+    //use es6 template using backtick ` and take css attribute
+    let audio = document.querySelector(`audio[data-key="${e.key}"]`);
+    if (!audio) return;
+    audio.play();
+});
+
+
+
+
+
+
 /*rock scissor paper game with browser console.
 getComputerChoice function that randomly gives rock scissors paper
 
@@ -77,5 +90,5 @@ function playRound (round) {
         console.log("Nobody wins!");
     }
 }
-const round = prompt("Enter number of rounds.");
-playRound(round);
+//const round = prompt("Enter number of rounds.");
+//playRound(round);

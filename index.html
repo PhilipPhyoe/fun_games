@@ -3,12 +3,31 @@
     <head>
         <meta charset="UTF-8">
         <title>My fun games</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body id="body">
-        <div class="rock-game">
-            <h1>Paper, Rock, Scissors Game</h1>
-            
+        <div class="top-nav">
+            <div class="nav-item">Home</div>
         </div>
+        <h1 class="main-title">Fun Games by Philip Phyoe</h1>
+        <div class="beats-game">
+            <div class="left">
+                <div data-key="a" class="key"><kbd>A</kbd></div>
+                <div data-key="s" class="key"><kbd>S</kbd></div>
+                <div data-key="d" class="key"><kbd>D</kbd></div>
+            </div>
+            <div class="right">
+                <div data-key="f" class="key"><kbd>F</kbd></div>
+                <div data-key="g" class="key"><kbd>G</kbd></div>
+                <div data-key="h" class="key"><kbd>H</kbd></div>
+            </div>
+        </div>
+        <audio data-key="a" src="./sounds/snare.wav"></audio>
+        <audio data-key="s" src="./sounds/clap.wav"></audio>
+        <audio data-key="d" src="./sounds/hihat.wav"></audio>
+        <audio data-key="f" src="./sounds/kick.wav"></audio>
+        <audio data-key="g" src="./sounds/openhat.wav"></audio>
+        <audio data-key="h" src="./sounds/ride.wav"></audio>
         
         <div id="container"></div>
         <script src="index.js"></script>
