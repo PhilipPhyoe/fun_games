@@ -77,39 +77,5 @@ function playRound (round) {
         console.log("Nobody wins!");
     }
 }
-//const round = prompt("Enter number of rounds.");
-//playRound(round);
-const container = document.querySelector('#container');
-const content = document.createElement('div');
-content.classList.add('content');
-content.textContent = "This is text-content.";
-container.appendChild(content);
-const paragraph = document.createElement('p');
-paragraph.textContent = "This is red words."
-paragraph.style.color = "Red";
-const headerOne = document.getElementById("h1");
-const body = document.querySelector("#body");
-const headerThree = document.createElement("h3");
-headerThree.textContent = "I am a blue h3.";
-headerThree.style.color = "blue";
-body.appendChild(headerThree);
-body.appendChild(paragraph);
-const box = document.createElement("div");
-box.style.border = "1px solid black";
-box.style.background = "pink";
-box.style.padding = "10px";
-body.appendChild(box);
-const headerFour = document.createElement("h4");
-headerFour.textContent = "another header in div.";
-headerFour.style.color = "purple";
-box.appendChild(headerFour);
-const paragraphTwo = document.createElement("p");
-paragraphTwo.textContent = "Me too!";
-paragraphTwo.style.color = "green";
-box.appendChild(paragraphTwo);
-const button = document.createElement("button");
-button.onclick = "alertFunction()";
-button.textContent = "Click Me!";
-box.appendChild(button);
-button.addEventListener("click", () => {alert("Yes, it is.");});
-button.addEventListener("click", (e) => {e.target.style.background = "blue";});
+const round = prompt("Enter number of rounds.");
+playRound(round);
