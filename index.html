@@ -13,7 +13,7 @@
         <div class="beats-game">
             <div class="left">
                 <div data-key="a" class="key"><kbd>A</kbd></div>
-                <div data-key="s" class="key"><kbd>S</kbd></div>
+                <div data-key="w" class="key"><kbd>W</kbd></div>
                 <div data-key="d" class="key"><kbd>D</kbd></div>
             </div>
             <div class="right">
@@ -23,13 +23,42 @@
             </div>
         </div>
         <audio data-key="a" src="./sounds/snare.wav"></audio>
-        <audio data-key="s" src="./sounds/clap.wav"></audio>
+        <audio data-key="w" src="./sounds/clap.wav"></audio>
         <audio data-key="d" src="./sounds/hihat.wav"></audio>
         <audio data-key="f" src="./sounds/kick.wav"></audio>
         <audio data-key="g" src="./sounds/openhat.wav"></audio>
         <audio data-key="h" src="./sounds/ride.wav"></audio>
-        
-        <div id="container"></div>
+        <div class="rock-game">
+            <h2>Play Rock/Scissors/Paper with keyboard.</h2>
+            <div id="key-board">
+                <div data-chr="r" class="key-pad"><kbd>R</kbd><p class="tip">Press 'R' for rock</p></div>
+                <div data-chr="p" class="key-pad"><kbd>P</kbd><p class="tip">Press 'P' for paper</p></div>
+                <div data-chr="s" class="key-pad"><kbd>S</kbd><p class="tip">Press 'S' for scissors</p></div>
+            </div>
+            <h2>Play Rock/Scissors/Paper by touching the button.</h2>
+            <div id="ui">
+                <button id="ROCK" class="key-touch"><p class="tip">R for rock</p></button>
+                <button id="PAPER" class="key-touch"><p class="tip">P for paper</p></button>
+                <button id="SCISSORS" class="key-touch"><p class="tip">S for scissors</p></button>
+            </div>
+            <div id="game-info">
+                <div id="choices">
+                    <div id="player-choice">??</div>
+                    <div id="computer-choice">??</div>
+                </div>
+                <div id="scores">
+                    <div id="who-wins">Let's play the game!</div>
+                    <div id="player-scores">Player: 0</div>
+                    <div id="computer-scores">Computer: 0</div>
+                    
+                </div>
+                <div class="winner" id="winner">
+                    <div id="final-winner"></div>
+                    <button id="restart">Restart Game</button>
+                </div>
+            </div>
+        </div>
+        <footer class="copyright">Copyright @ <script>document.write(new Date().getFullYear())</script> Efectivee</footer>
         <script src="index.js"></script>
     </body>
 </html>
