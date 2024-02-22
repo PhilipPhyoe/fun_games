@@ -247,12 +247,12 @@ function MultiplyNumbers(x, y) {
   return x * y;
 }
 function DivideNumbers(x, y) {
-  return parseInt((x / y).toFixed(2));
+  return parseFloat((x / y).toFixed(6));
 }
 var result = 0;
 function Operation(x, y, expression) {
-  var first = parseInt(x);
-  var last = parseInt(y);
+  var first = parseFloat(x);
+  var last = parseFloat(y);
 
   if (expression === "+") {
     return AddNumbers(first, last);
@@ -268,39 +268,96 @@ function Operation(x, y, expression) {
 var firstNumber = "";
 var secondNumber = "";
 var operatorType = "";
+const display = document.querySelector(".calculate");
+const displayResult = document.querySelector(".result");
+const operators = document.querySelectorAll(".operator");
 const numbers = document.querySelectorAll(".number");
+const clear = document.querySelector(".clear");
+
+clear.addEventListener("click", () => {
+  firstNumber = "";
+  secondNumber = "";
+  operatorType = "";
+  display.innerText = "0";
+  displayResult.innerText = "0";
+});
+
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
     if (operatorType === "") {
-      firstNumber += String(number.innerText);
+      if (firstNumber == "0") {
+        firstNumber = String(number.innerText);
+      } else {
+        firstNumber += String(number.innerText);
+      }
+
       console.log("First number is ", firstNumber);
+      display.innerText = firstNumber;
     } else {
-      secondNumber += String(number.innerText);
-      console.log("First number is ", firstNumber);
-      console.log("Second number is ", secondNumber);
-      //result = AddNumbers(parseInt(firstNumber), parseInt(secondNumber));
+      if (secondNumber != "") {
+        secondNumber += String(number.innerText);
+        console.log("Second number is ", secondNumber);
+        display.innerText += String(number.innerText);
+      } else {
+        secondNumber += String(number.innerText);
+        //console.log("First number is ", firstNumber);
+        console.log("Second number is ", secondNumber);
+        //result = AddNumbers(parseInt(firstNumber), parseInt(secondNumber));
+
+        display.innerText += secondNumber;
+      }
     }
   });
 });
 //3. Operators and Operator variables
 
-const operators = document.querySelectorAll(".operator");
 operators.forEach((operator) => {
   operator.addEventListener("click", () => {
-    operatorType = String(operator.innerText);
-    console.log(operatorType);
+    if (operatorType == "") {
+      if (firstNumber == "") {
+        firstNumber += "0";
+        display.innerText = operatorType;
+      }
+      operatorType = String(operator.innerText);
+      console.log(operatorType);
+      display.innerText += operatorType;
+    } else if (operatorType != "" && secondNumber != "") {
+      result = Operation(firstNumber, secondNumber, operatorType);
+      console.log(result);
+      displayResult.innerText = result;
+      firstNumber = String(result);
+      operatorType = String(operator.innerText);
+      display.innerText += operatorType;
+      secondNumber = "";
+      console.log(`First number becomes ${firstNumber}`);
+      console.log(`Operator becomes ${operatorType}`);
+      console.log(`Second number becomes ${secondNumber}`);
+    } else {
+      alert(`Operator ${operatorType} is already selected.`);
+    }
   });
 });
-const clear = document.querySelector(".clear");
+
 //4. equal operator
 const equalOperator = document.querySelector(".equal");
 equalOperator.addEventListener("click", () => {
-  result = Operation(firstNumber, secondNumber, operatorType);
+  if (firstNumber != "" && secondNumber != "" && operatorType != "") {
+    result = Operation(firstNumber, secondNumber, operatorType);
+  } else if (firstNumber != "" && secondNumber == "" && operatorType == "") {
+    result = firstNumber;
+  } else if (firstNumber != "" && secondNumber == "" && operatorType != "") {
+    result = firstNumber;
+  } else if (firstNumber == "") {
+    firstNumber += "0";
+    result = firstNumber;
+    display.innerText = firstNumber;
+  } else return;
   console.log(result);
+  displayResult.innerText = result;
   firstNumber = result;
   operatorType = "";
   secondNumber = "";
   console.log(`First number becomes ${firstNumber}`);
   console.log(`Operator becomes ${operatorType}`);
-  console.log(`Operator becomes ${secondNumber}`);
+  console.log(`Second number becomes ${secondNumber}`);
 });

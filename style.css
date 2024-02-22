@@ -290,3 +290,14 @@ p {
     background-color: #7B2B8E;
     color: white;
 }
+.clear {
+    width: 380px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    background-color: white;
+}
