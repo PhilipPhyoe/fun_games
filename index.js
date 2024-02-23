@@ -238,13 +238,13 @@ function playRound (get) {
 //Calculator project
 //1.functions
 function AddNumbers(x, y) {
-  return x + y;
+  return parseFloat((x + y).toFixed(6));
 }
 function SubtractNumbers(x, y) {
-  return x - y;
+  return parseFloat((x - y).toFixed(6));
 }
 function MultiplyNumbers(x, y) {
-  return x * y;
+  return parseFloat((x * y).toFixed(6));
 }
 function DivideNumbers(x, y) {
   return parseFloat((x / y).toFixed(6));
@@ -324,7 +324,11 @@ operators.forEach((operator) => {
     } else if (operatorType != "" && secondNumber != "") {
       result = Operation(firstNumber, secondNumber, operatorType);
       console.log(result);
-      displayResult.innerText = result;
+      if (result < 1e3 && result < 1e-3) {
+        displayResult.innerText = String(result);
+      } else {
+        displayResult.innerText = result.toExponential(3);
+      }
       firstNumber = String(result);
       operatorType = String(operator.innerText);
       display.innerText += operatorType;
@@ -353,7 +357,11 @@ equalOperator.addEventListener("click", () => {
     display.innerText = firstNumber;
   } else return;
   console.log(result);
-  displayResult.innerText = result;
+  if (result < 1e3 && result < 1e-3) {
+    displayResult.innerText = String(result);
+  } else {
+    displayResult.innerText = result.toExponential(3);
+  }
   firstNumber = result;
   operatorType = "";
   secondNumber = "";
